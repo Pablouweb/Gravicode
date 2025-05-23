@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ψ(Ω) – Gravidade</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffd5;
+      text-shadow: 0 0 5px #00ffd5;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 213, 0.2);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      background: #121212;
+      border: 1px solid #00ffd5;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background-color: #00ffd5;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #00bfa5;
+    }
+
+    .resultado {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      padding: 1rem;
+      background-color: #121212;
+      border-left: 4px solid #00ffd5;
+      border-radius: 8px;
+    }
+
+    .formula {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #00ffd5;
+    }
+
+    .tabela {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 213, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.6rem;
+      border: 1px solid #00ffd5;
+      text-align: left;
+    }
+
+    th {
+      background-color: #00ffd5;
+      color: #000;
+    }
+
+    h2 {
+      color: #00ffd5;
+      margin-top: 2rem;
+      border-bottom: 2px solid #00ffd5;
+      padding-bottom: 0.3rem;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ψ(Ω) – Controle Gravitacional</h1>
+  <div class="container">
+    <div class="formula">ψ(Ω) = (μχ + ΔΣ) / θ∞ | CD = ψ(Ω) . 2,50</div>
+
+    <label for="m">μχ (Massa percebida)</label>
+    <input type="number" id="m" min="1" max="10" placeholder="1 a 10">
+
+    <label for="d">ΔΣ (Energia gravitacional do ambiente)</label>
+    <input type="number" id="d" min="0" max="5" placeholder="0 a 5">
+
+    <label for="t">θ∞ (Estado emocional de Ark)</label>
+    <input type="number" id="t" min="1" max="4" placeholder="1 a 4">
+
+    <button onclick="calcular()">Calcular ψ(Ω)</button>
+
+    <div class="resultado" id="output">
+      Preencha os valores e clique em calcular.
+    </div>
+  </div>
+
+  <!-- TABELAS DE REFERÊNCIA -->
+
+  <div class="tabela">
+    <h2>🧍‍♂️ μχ – Massa Percebida do Alvo</h2>
+    <table>
+      <tr>
+        <th>Tipo de Alvo</th>
+        <th>μχ</th>
+      </tr>
+      <tr>
+        <td>Criança / Animal pequeno</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Humano comum</td>
+        <td>2 – 3</td>
+      </tr>
+      <tr>
+        <td>Armado, correndo ou com feitiço</td>
+        <td>4 – 6</td>
+      </tr>
+      <tr>
+        <td>Robusto, gigante, metalizado</td>
+        <td>7 – 10</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="tabela">
+    <h2>🌍 ΔΣ – Energia Gravitacional do Ambiente</h2>
+    <table>
+      <tr>
+        <th>Ambiente</th>
+        <th>ΔΣ</th>
+      </tr>
+      <tr>
+        <td>Chão sólido e silencioso</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Área urbana, pavimentada</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Região instável / mágica</td>
+        <td>3 – 4</td>
+      </tr>
+      <tr>
+        <td>Magia densa, ruínas flutuantes</td>
+        <td>5</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="tabela">
+    <h2>🧘‍♂️ θ∞ – Estado Mental de Ark</h2>
+    <table>
+      <tr>
+        <th>Estado Mental</th>
+        <th>θ∞</th>
+      </tr>
+      <tr>
+        <td>Zen absoluto (Ódio focado, intenção assassina única)</td>
+        <td>0.75</td>
+      </tr>
+      <tr>
+        <td>Focado e calmo</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Tenso ou emocionalmente afetado</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Traumatizado, instável, raivoso</td>
+        <td>3</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="tabela">
+    <h2>🎲 Teste de Resistência do inimigo contra "ψ(Ω)"</h2>
+    <table>
+      <tr>
+        <th>2d6 + Atributo (do alvo)</th>
+        <th>Comparação com ψ(Ω)</th>
+        <th>Consequência</th>
+      </tr>
+      <tr>
+        <td>&lt; ψ(Ω)</td>
+        <td>Fracasso</td>
+        <td>Afetado completamente pela gravidade. Penalidade total, dano ou imobilização.</td>
+      </tr>
+      <tr>
+        <td>= ψ(Ω)</td>
+        <td>Sucesso Parcial</td>
+        <td>Consegue resistir parcialmente. Sofre efeitos moderados (ex: -1, desvantagem).</td>
+      </tr>
+      <tr>
+        <td>&gt; ψ(Ω)</td>
+        <td>Sucesso</td>
+        <td>Resiste ao efeito com esforço. Sofre apenas desconforto ou lentidão leve.</td>
+      </tr>
+      <tr>
+        <td>&gt;= ψ(Ω) + 4</td>
+        <td>Sucesso Crítico</td>
+        <td>Ignora o efeito completamente e pode até contra-atacar, se narrativamente viável.</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="tabela">
+    <h2>📘 Como Usar</h2>
+    <p>
+      Após calcular ψ(Ω), o jogador rola <strong>2d6 + Atributo</strong>(Para realizar o GraviCode), e o inimigo tem a DT para resistir igual a '2.ψ(Ω)' <br>
+      Use essa rolagem para determinar se Ark consegue aplicar o controle gravitacional com sucesso ou se há falhas.
+    </p>
+  </div>
+
+  <script>
+    function calcular() {
+      const m = parseFloat(document.getElementById('m').value);
+      const d = parseFloat(document.getElementById('d').value);
+      const t = parseFloat(document.getElementById('t').value);
+
+      if (isNaN(m) || isNaN(d) || isNaN(t)) {
+        document.getElementById('output').innerHTML = "⚠️ Preencha todos os campos corretamente.";
+        return;
+      }
+
+      if (t === 0) {
+        document.getElementById('output').innerHTML = "⚠️ θ∞ não pode ser zero.";
+        return;
+      }
+
+      const psi = (m + d) / t;
+      let efeito = "";
+
+      if (psi < 2) {
+        efeito = "Gravidade sutil. Desconforto e leve desequilíbrio.";
+      } else if (psi < 4) {
+        efeito = "Gravidade média. Lentidão e peso aumentado.";
+      } else if (psi < 6) {
+        efeito = "Gravidade intensa. Colapso parcial e dor.";
+      } else {
+        efeito = "Gravidade extrema. Colapso total e imobilização.";
+      }
+
+      document.getElementById('output').innerHTML = `ψ(Ω) = ${psi.toFixed(2)}<br>${efeito}`;
+    }
+  </script>
+</body>
+
+</html>
